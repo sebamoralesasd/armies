@@ -8,9 +8,68 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-[ 'chinese', 'britons', 'byzantines' ].each do |name|
-  Civilization.find_or_create_by!(name:, init_config: { pikeman: 1, archer: 1, knight: 1 })
+[ 'pikeman', 'archer', 'knight' ].each do |name|
+  UnitType.find_or_create_by!(name:)
 end
+
+
+[ 'chinese', 'britons', 'byzantines' ].each do |name|
+  Civilization.find_or_create_by!(name:)
+end
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'pikeman'),
+  civilization: Civilization.find_by!(name: 'chinese'),
+  amount: 2
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'pikeman'),
+  civilization: Civilization.find_by!(name: 'britons'),
+  amount: 10
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'pikeman'),
+  civilization: Civilization.find_by!(name: 'byzantines'),
+  amount: 5
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'archer'),
+  civilization: Civilization.find_by!(name: 'chinese'),
+  amount: 25
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'archer'),
+  civilization: Civilization.find_by!(name: 'britons'),
+  amount: 10
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'archer'),
+  civilization: Civilization.find_by!(name: 'byzantines'),
+  amount: 8
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'knight'),
+  civilization: Civilization.find_by!(name: 'chinese'),
+  amount: 2
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'knight'),
+  civilization: Civilization.find_by!(name: 'britons'),
+  amount: 10
+)
+
+CivilizationUnitType.find_or_create_by!(
+  unit_type: UnitType.find_by!(name: 'knight'),
+  civilization: Civilization.find_by!(name: 'byzantines'),
+  amount: 15
+)
 
 [ 100, 1_000, 10_000 ].each do |coins|
   Civilization.all.each do |civilization|
@@ -19,9 +78,10 @@ end
 end
 
 armies_ids = Army.all.pluck('id')
+unit_types_ids = UnitType.all.pluck('id')
 (0..100).each do |_i|
   Unit.find_or_create_by!(
-    unit_type: Unit::UNIT_TYPES.sample,
+    unit_type_id: unit_types_ids.sample,
     years_of_life: rand(0..100),
     force_points: rand(0..100),
     army_id: armies_ids.sample
@@ -29,32 +89,32 @@ armies_ids = Army.all.pluck('id')
 end
 
 Training.find_or_create_by!(
-  unit_type: 'pikeman',
+  unit_type: UnitType.find_by!(name: 'pikeman'),
   points: 3,
   cost: 10
 )
 
 Training.find_or_create_by!(
-  unit_type: 'archer',
+  unit_type: UnitType.find_by!(name: 'archer'),
   points: 7,
   cost: 20
 )
 
 Training.find_or_create_by!(
-  unit_type: 'knight',
+  unit_type: UnitType.find_by!(name: 'knight'),
   points: 10,
   cost: 30
 )
 
 Evolution.find_or_create_by!(
-  init_unit_type: 'pikeman',
-  final_unit_type: 'archer',
+  init_unit_type: UnitType.find_by!(name: 'pikeman'),
+  final_unit_type: UnitType.find_by!(name: 'archer'),
   cost: 30
 )
 
 Evolution.find_or_create_by!(
-  init_unit_type: 'archer',
-  final_unit_type: 'knight',
+  init_unit_type: UnitType.find_by!(name: 'archer'),
+  final_unit_type: UnitType.find_by!(name: 'knight'),
   cost: 40
 )
 

@@ -25,6 +25,12 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
   end
 
+  config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
+
+  # Change to "debug" to log everything (including potentially personally-identifiable information!).
+  config.log_level = :debug # ENV.fetch("RAILS_LOG_LEVEL", "info")
+
+
   # Change to :null_store to avoid any caching.
   config.cache_store = :memory_store
 

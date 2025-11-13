@@ -1,6 +1,5 @@
 class Civilization < ApplicationRecord
   has_many :armies
 
-  validates :name, :init_config, presence: true
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 end
