@@ -64,6 +64,6 @@ Evolution.find_or_create_by!(
   Battle.find_or_create_by!(
     attacker_army_id:,
     defender_army_id:,
-    winner_prize: 1000
+    winner_prize: 100
   )
 end

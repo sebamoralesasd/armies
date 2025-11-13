@@ -18,16 +18,21 @@ class Battle < ApplicationRecord
 
     if attacker_points == defender_points
       self.result = "draw"
+      # TODO: draw criteria
       return
     end
 
-      if attacker_points > defender_points
-        self.result = "attacker"
-        self.winner = attacker_army
-      else
-        self.result = "defender"
-        self.winner = defender_army
-      end
+    if attacker_points > defender_points
+      self.result = "attacker"
+      self.winner = attacker_army
+    else
+      self.result = "defender"
+      self.winner = defender_army
+    end
+
+      winner_coins = self.winner.coins
+      self.winner.update!(coins: winner_coins + winner_prize)
+    # TODO: loser criteria
   end
 
   def armies_loop
