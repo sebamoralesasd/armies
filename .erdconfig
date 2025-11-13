@@ -1,0 +1,14 @@
+attributes:
+  - content
+  - foreign_keys
+  - inheritance
+filename: erd
+filetype: png 
+indirect: true
+markup: true
+notation: simple
+sort: true
+warn: true
+exclude: null
+only: null
+only_recursion_depth: null

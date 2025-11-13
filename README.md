@@ -1,24 +1,21 @@
-# README
+# Armies model data
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo contains the armies problem data modelling. The model schema can be found at db/schema.rb and a possible seed at db/seeds.rb.  
 
-Things you may want to cover:
+You can run the following commands to query the database
 
-* Ruby version
+```
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle exec rails db:seed
 
-* System dependencies
+bundle exec rails c
+```
 
-* Configuration
+## Entity-Relationship diagram
 
-* Database creation
+![erd](./erd.png)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Notes
+ - The initial unit config from each civilization is defined as a JSON assuming unit types might change over time. 
+ - Defeat and draw battles criteria are not defined into the Battle model. Might consider implement service classes for both requirements. 
