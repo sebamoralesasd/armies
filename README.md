@@ -17,5 +17,6 @@ bundle exec rails c
 ![erd](./erd.png)
 
 ## Notes
- - The initial unit config from each civilization is defined as a JSON, assuming unit types might change over time. 
+ - The initial unit config from each civilization is defined as a JSON, assuming unit types and its values might change over time. 
  - Defeat and draw battles criteria are not defined into the Battle model. Might consider implementing service classes for both requirements. 
+ - Both History models are suggestions to add to the armies’ domain model, although they are not used in the seeds file.
