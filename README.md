@@ -5,6 +5,7 @@ This repo contains the data modelling for the armies problem. The model schema c
 You can run the following commands to query the database.
 
 ```
+bundle install
 bundle exec rails db:create
 bundle exec rails db:migrate
 bundle exec rails db:seed
